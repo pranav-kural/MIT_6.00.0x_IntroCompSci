@@ -72,7 +72,7 @@ def getAvailableLetters(lettersGuessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE...
+    return ''.join(sorted(set(ENGLISH_ALPHABET) - set(lettersGuessed)))
     
 
 def hangman(secretWord):
@@ -95,7 +95,7 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
+    print("Welcome to the game Hangman!")
 
 
 
@@ -106,5 +106,5 @@ def hangman(secretWord):
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
+secretWord = chooseWord(wordlist).lower()
 # hangman(secretWord)
