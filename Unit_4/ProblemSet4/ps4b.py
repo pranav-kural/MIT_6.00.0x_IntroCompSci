@@ -124,8 +124,48 @@ def playGame(wordList):
 
     wordList: list (string)
     """
-    # TO DO... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this when you code this function
+    # nested helper function to avoid redundant code
+    def startGame(hand, wordList, n):
+        # will keep looping if user enters invalid response
+        while True:
+          # ask who's playing
+          player = input("Enter u to have yourself play, c to have the computer play: ")
+          if player == "u":
+            # start game
+            playHand(hand, wordList, n)
+            break
+          elif player == "c":
+            # computer plays 
+            compPlayHand(hand, wordList, n)
+            break
+          else:
+            # if user enters invalid response
+            print("Invalid response, try again!")
+
+    prevHand = {}
+    while True:
+      userInput = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+
+      if userInput == "e":
+        break
+      elif userInput == "n":
+        # get new hand
+        newHand = dealHand(HAND_SIZE)
+        # start game  
+        startGame(newHand, wordList, HAND_SIZE)
+        # update previous hand
+        prevHand = dict(newHand)
+      elif userInput == "r":
+        if prevHand == {}:
+          print("You have not played a hand yet. Please play a new hand first!")
+          continue
+        # start game
+        startGame(prevHand, wordList, HAND_SIZE)
+      else:
+        print("Invalid command.")
+
+      
+
 
         
 #
